@@ -14,7 +14,8 @@ public class CurrencyFilter {
         "ARS", // Peso argentino
         "CLP", // Peso chileno
         "MXN", // Peso mexicano
-        "PEN"  // Sol peruano
+        "PEN", // Sol peruano
+        "COP"  // Peso colombiano
     ));
 
     public static boolean isCommonCurrency(String currencyCode) {
