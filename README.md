@@ -63,7 +63,7 @@ Este proyecto forma parte del programa Oracle Next Education (ONE), una iniciati
 1. Clonar el repositorio:
 
    ```bash
-   git clone https://github.com/[tu-usuario]/currency-converter-java.git
+   git clone https://github.com/joseuribeh98/currency-converter-java.git
    ```
 
 2. Navegar al directorio del proyecto:
