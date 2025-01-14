@@ -21,11 +21,43 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
 - Filtro de Monedas
 - Interfaz de Usuario
 
-## Requisitos
+## Requisitos del Sistema
 
-- Java JDK 11 o superior
-- Conexión a Internet para el consumo de la API
-- [Otras dependencias que definiremos durante el desarrollo]
+### Software Necesario
+
+- Java JDK 11 o superior - [Download Java LTS](https://adoptium.net/)
+- Biblioteca Gson 2.10.1 o superior
+- Postman - Para pruebas de API
+- IDE recomendado: IntelliJ IDEA (opcional)
+
+### Configuración del Ambiente de Desarrollo
+
+1. **Instalación de Java JDK**
+   - Descarga Java JDK desde <https://adoptium.net/>
+   - Instala siguiendo las instrucciones para tu sistema operativo
+   - Verifica la instalación ejecutando `java -version` en la terminal
+
+2. **Configuración de Gson**
+   - El proyecto utilizará Maven para gestionar dependencias
+   - La dependencia de Gson se agregará en el archivo `pom.xml`:
+
+   ```xml
+   <dependency>
+       <groupId>com.google.code.gson</groupId>
+       <artifactId>gson</artifactId>
+       <version>2.10.1</version>
+   </dependency>
+   ```
+
+3. **Instalación de Postman**
+   - Descarga Postman desde <https://www.postman.com/downloads/>
+   - Instala y crea una cuenta gratuita
+   - Será utilizado para probar las APIs de conversión de monedas
+
+4. **IDE (Opcional)**
+   - Descarga IntelliJ IDEA desde <https://www.jetbrains.com/idea/download/>
+   - Puedes usar la versión Community (gratuita) o Ultimate
+   - Configura el JDK en el IDE después de la instalación
 
 ## Instalación
 

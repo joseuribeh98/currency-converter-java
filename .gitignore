@@ -1,0 +1,21 @@
+# Archivos compilados
+target/
+*.class
+
+# Archivos de IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Logs
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Directorios de Maven
+.mvn/
