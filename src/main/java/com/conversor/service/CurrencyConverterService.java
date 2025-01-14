@@ -1,18 +1,23 @@
 package com.conversor.service;
 
 import com.conversor.model.Currency;
+import com.conversor.model.ConversionRecord;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CurrencyConverterService {
     private final ExchangeRateApiService apiService;
     private Map<String, Currency> currencies;
+    private final List<ConversionRecord> history;
 
     public CurrencyConverterService() {
         this.apiService = new ExchangeRateApiService();
         this.currencies = new HashMap<>();
+        this.history = new ArrayList<>();
     }
 
     public void fetchExchangeRates() throws IOException {
@@ -33,11 +38,17 @@ public class CurrencyConverterService {
             throw new IllegalArgumentException("Moneda no encontrada");
         }
 
-        // Conversión usando USD como base
-        return amount * (toCurrency.getRate() / fromCurrency.getRate());
+        double result = amount * (toCurrency.getRate() / fromCurrency.getRate());
+        
+        // Agregar al historial
+        history.add(new ConversionRecord(fromCode, toCode, amount, result));
+        
+        return result;
     }
 
-    public Map<String, Currency> getCurrencies() {
-        return currencies;
+    public List<ConversionRecord> getLastConversions(int limit) {
+        int historySize = history.size();
+        int startIndex = Math.max(0, historySize - limit);
+        return history.subList(startIndex, historySize);
     }
 }

@@ -1,9 +1,11 @@
 package com.conversor;
 
+import com.conversor.model.ConversionRecord;
 import com.conversor.service.CurrencyConverterService;
 import com.conversor.util.CurrencyFilter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,11 +14,11 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Inicializando Conversor de Monedas...");
-        
+
         try {
             converter.fetchExchangeRates();
             System.out.println("Tasas de cambio actualizadas correctamente");
-            
+
             while (true) {
                 mostrarMenu();
                 int opcion = scanner.nextInt();
@@ -30,6 +32,9 @@ public class Main {
                         realizarConversion();
                         break;
                     case 3:
+                        mostrarHistorial();
+                        break;
+                    case 4:
                         System.out.println("¡Gracias por usar el conversor!");
                         return;
                     default:
@@ -45,7 +50,8 @@ public class Main {
         System.out.println("\n=== Conversor de Monedas ===");
         System.out.println("1. Ver monedas disponibles");
         System.out.println("2. Realizar conversión");
-        System.out.println("3. Salir");
+        System.out.println("3. Ver historial de conversiones");
+        System.out.println("4. Salir");
         System.out.print("Seleccione una opción: ");
     }
 
@@ -63,8 +69,8 @@ public class Main {
         System.out.print("Ingrese la moneda de destino (ej: EUR): ");
         String monedaDestino = scanner.nextLine().toUpperCase();
 
-        if (!CurrencyFilter.isCommonCurrency(monedaOrigen) || 
-            !CurrencyFilter.isCommonCurrency(monedaDestino)) {
+        if (!CurrencyFilter.isCommonCurrency(monedaOrigen) ||
+                !CurrencyFilter.isCommonCurrency(monedaDestino)) {
             System.out.println("Error: Por favor use solo las monedas disponibles.");
             return;
         }
@@ -73,10 +79,20 @@ public class Main {
         try {
             double monto = scanner.nextDouble();
             double resultado = converter.convert(monedaOrigen, monedaDestino, monto);
-            System.out.printf("%.2f %s = %.2f %s%n", 
-                monto, monedaOrigen, resultado, monedaDestino);
+            System.out.printf("%.2f %s = %.2f %s%n",
+                    monto, monedaOrigen, resultado, monedaDestino);
         } catch (Exception e) {
             System.out.println("Error: Por favor ingrese un monto válido.");
+        }
+    }
+
+    private static void mostrarHistorial() {
+        System.out.println("\nÚltimas 5 conversiones:");
+        List<ConversionRecord> ultimas = converter.getLastConversions(5);
+        if (ultimas.isEmpty()) {
+            System.out.println("No hay conversiones registradas.");
+        } else {
+            ultimas.forEach(System.out::println);
         }
     }
 }
