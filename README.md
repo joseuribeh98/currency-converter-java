@@ -2,15 +2,21 @@
 
 ## Descripción
 
-Aplicación Java que permite convertir diferentes tipos de monedas utilizando tasas de cambio en tiempo real a través de una API.
+Aplicación Java que permite convertir diferentes tipos de monedas utilizando tasas de cambio en tiempo real a través de una API. Este proyecto fue desarrollado como parte del programa ONE - Oracle Next Education.
+
+## Sobre ONE - Oracle Next Education
+
+Este proyecto forma parte del programa Oracle Next Education (ONE), una iniciativa de Oracle y Alura Latam que proporciona formación en tecnología y habilidades para el desarrollo profesional. Para más información, visita: <https://www.oracle.com/ar/education/oracle-next-education/>
 
 ## Características
 
-- Conversión entre diferentes monedas
+- Conversión entre diferentes monedas en tiempo real
 - Consumo de API de tasas de cambio
-- Interfaz de usuario intuitiva
+- Interfaz de consola intuitiva
 - Manejo de datos JSON
-- Filtrado de monedas específicas
+- Filtrado de monedas específicas de Latinoamérica
+- Historial de conversiones con marca de tiempo
+- Visualización de últimas 5 conversiones realizadas
 
 ## Estructura del Proyecto
 
@@ -26,9 +32,8 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
 ### Software Necesario
 
 - Java JDK 11 o superior - [Download Java LTS](https://adoptium.net/)
-- Biblioteca Gson 2.10.1 o superior
-- Postman - Para pruebas de API
-- IDE recomendado: IntelliJ IDEA (opcional)
+- Apache Maven 3.6.3 o superior
+- Biblioteca Gson 2.10.1 o superior (gestionada por Maven)
 
 ### Configuración del Ambiente de Desarrollo
 
@@ -37,9 +42,13 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
    - Instala siguiendo las instrucciones para tu sistema operativo
    - Verifica la instalación ejecutando `java -version` en la terminal
 
-2. **Configuración de Gson**
-   - El proyecto utilizará Maven para gestionar dependencias
-   - La dependencia de Gson se agregará en el archivo `pom.xml`:
+2. **Instalación de Maven**
+   - Descarga Maven desde <https://maven.apache.org/download.cgi>
+   - Sigue las instrucciones de instalación: <https://maven.apache.org/install.html>
+   - Verifica la instalación ejecutando `mvn -version`
+
+3. **Configuración de dependencias**
+   El proyecto utilizará Maven para gestionar dependencias. Las principales dependencias se encuentran en el archivo `pom.xml`:
 
    ```xml
    <dependency>
@@ -48,16 +57,6 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
        <version>2.10.1</version>
    </dependency>
    ```
-
-3. **Instalación de Postman**
-   - Descarga Postman desde <https://www.postman.com/downloads/>
-   - Instala y crea una cuenta gratuita
-   - Será utilizado para probar las APIs de conversión de monedas
-
-4. **IDE (Opcional)**
-   - Descarga IntelliJ IDEA desde <https://www.jetbrains.com/idea/download/>
-   - Puedes usar la versión Community (gratuita) o Ultimate
-   - Configura el JDK en el IDE después de la instalación
 
 ## Instalación
 
@@ -90,6 +89,7 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
 2. El programa mostrará un menú con las siguientes opciones:
    - Ver monedas disponibles
    - Realizar conversión
+   - Ver historial de conversiones
    - Salir
 
 3. Para realizar una conversión:
@@ -108,6 +108,7 @@ Aplicación Java que permite convertir diferentes tipos de monedas utilizando ta
    - CLP (Peso chileno)
    - MXN (Peso mexicano)
    - PEN (Sol peruano)
+   - COP (Peso colombiano)
 
 ## Contribución
 
